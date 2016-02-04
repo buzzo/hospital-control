@@ -1,0 +1,50 @@
+<div class="sm-layout-padding">
+    <md-card flex-gt-sm="90" flex-gt-md="80">
+        <md-card-content>
+            <div class="loading-padding" layout="row" layout-sm="column" layout-align="center center"
+                 ng-show="isLoading">
+                <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+                &nbsp;&nbsp;&nbsp;{{'LOADING'|translate}}...
+            </div>
+            <!--filter message-->
+            <div class="loading-padding" layout="row" layout-sm="column" layout-align="center center"
+                 ng-show="isFiltering && !isLoading && !entities.length">
+                <div layout="column" layout-align="center center" class="inset">
+                    <md-icon class="material-icons message-icon">search</md-icon>
+                    <div class="message-header">{{'YOUR_LIST_IS_EMPTY'|translate}}</div>
+                    <div class="message-text">{{'TRY_CHANGING_YOUR_QUERY'|translate}}</div>
+                </div>
+            </div>
+            <!--empty message-->
+            <div class="loading-padding" layout="row" layout-sm="column" layout-align="center center"
+                 ng-show="!isFiltering && !isLoading && !entities.length">
+                <div layout="column" layout-align="center center" class="inset">
+                    <md-icon class="material-icons message-icon">filter_drama</md-icon>
+                    <div class="message-header">{{'NO_SEARCH_RESULT_FOUND'|translate:'{entity:PATIENT}'}}</div>
+                    <div class="message-text">{{'YOU_CAN_ADD_NEW_ENTITY_USING_BUTTON'|translate:'{entity:PATIENT}'}}</div>
+                </div>
+            </div>
+            <!--list-->
+            <md-list ng-show="!isLoading">
+                <md-list-item class="md-3-line" ng-repeat="entity in entities" ng-click="update(entity)">
+                    <div class="md-list-item-text">
+                        <h3>{{ entity.name }}</h3>
+                        <h4>{{'TELEPHONE'|translate}}: {{ entity.tel }}</h4>
+                        <h4>{{'BIRTHDAY'|translate}}: {{ entity.birthday | date }}</h4>
+                        <!--<p>{{'NOTES'|translate}}: {{ entity.notes }}</p>-->
+                    </div>
+                    <md-divider inset ng-if="!$last"></md-divider>
+                </md-list-item>
+            </md-list>
+        </md-card-content>
+    </md-card>
+</div>
+
+<div class="fixed-bottom">
+    <md-button class="md-fab" ng-click="add()">
+        <md-tooltip>
+            {{'ADD'|translate}}
+        </md-tooltip>
+        <md-icon md-menu-origin class="material-icons">add</md-icon>
+    </md-button>
+</div>

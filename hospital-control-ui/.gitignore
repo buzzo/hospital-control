@@ -1,0 +1,12 @@
+.cdt/
+.idea/
+tmp/
+target/
+node_modules/
+*.tar.gz
+*.tgz
+*.iml
+*.log
+.settings/
+.project
+build/

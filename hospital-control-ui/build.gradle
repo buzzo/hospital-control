@@ -1,0 +1,33 @@
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath('be.filipblondeel.gradle:gradle-gulp-plugin:0.1')
+        classpath('se.transmode.gradle:gradle-docker:1.2')
+    }
+}
+
+apply plugin: 'idea'
+apply plugin: 'docker'
+apply plugin: 'gulp'
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.7'
+}
+
+gulp_prod.dependsOn 'npmInstall'
+
+task buildDocker(type: Docker, dependsOn: gulp_prod) {
+    push = false
+    applicationName = 'hospital-control-ui'
+    dockerfile = file('docker/Dockerfile')
+    doFirst {
+        copy {
+            from file('build/application.tar'), file('docker/httpd.conf'), file('docker/vhost-service.conf')
+            into stageDir
+        }
+    }
+}
+

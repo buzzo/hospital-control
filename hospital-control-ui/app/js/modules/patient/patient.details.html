@@ -1,0 +1,70 @@
+<md-dialog flex="66">
+    <form novalidate name="entityForm">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>{{'PATIENT_DETAILS'|translate}}</h2>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div layout layout-sm="column">
+                <md-input-container flex>
+                    <label>{{'NAME'|translate}} ({{'REQUIRED'|translate}})</label>
+                    <input name="patientName" md-maxlength="128" ng-model="entity.name" ng-disabled="viewMode"
+                           ng-required="true">
+                    <div ng-messages="entityForm.patientName.$error">
+                        <div ng-message="required">{{'THIS_FIELD_IS_REQUIRED'|translate}}</div>
+                        <div ng-message="md-maxlength">{{'THIS_FIELD_MUST_BE_LESS_THAN'|translate:'{size:128}'}}</div>
+                    </div>
+                </md-input-container>
+            </div>
+            <div layout layout-sm="column">
+                <md-input-container flex="50">
+                    <label>{{'TELEPHONE'|translate}}</label>
+                    <input type="tel" name="patientTel" md-maxlength="32" ng-model="entity.tel" ng-disabled="viewMode">
+                    <div ng-messages="entityForm.patientTel.$error">
+                        <div ng-message="required">{{'THIS_FIELD_IS_REQUIRED'|translate}}</div>
+                        <div ng-message="md-maxlength">{{'THIS_FIELD_MUST_BE_LESS_THAN'|translate:'{size:32}'}}</div>
+                    </div>
+                </md-input-container>
+                &nbsp;&nbsp;&nbsp;
+                <md-input-container flex="50">
+                    <label>{{'BIRTHDAY'|translate}}</label>
+                    <input dateconverter type="date" ng-model="entity.birthday" ng-disabled="viewMode">
+                </md-input-container>
+            </div>
+        </md-dialog-content>
+
+        <div class="md-actions" layout="row">
+            <!--remove icon-->
+            <div layout="row" layout-align="start">
+                <md-button class="delete-icon md-icon-button" ng-click="delete()"
+                           ng-disabled="!viewMode||isUpdating" ng-show="isEntityUpdate">
+                    <md-tooltip>
+                        {{'REMOVE'|translate}}
+                    </md-tooltip>
+                    <md-icon class="material-icons">delete</md-icon>
+                </md-button>
+            </div>
+            <div flex></div>
+            <div layout="row" layout-align="end">
+                <!--shows when editing-->
+                <md-button ng-show="!viewMode" ng-disabled="!entityForm.$valid||isUpdating" ng-click="save()"
+                           class="md-raised md-primary">
+                    {{'SAVE'|translate}}
+                </md-button>
+                <md-button ng-show="!viewMode" ng-click="cancel()" class="md-warn">
+                    {{'CANCEL'|translate}}
+                </md-button>
+                <!--shows when NOT editing-->
+                <md-button ng-show="viewMode" ng-disabled="isUpdating" ng-click="toggleViewMode()"
+                           class="md-raised md-primary">
+                    {{'EDIT'|translate}}
+                </md-button>
+                <md-button ng-show="viewMode" ng-click="close(wasEntityUpdated)" class="md-raised">
+                    {{'CLOSE'|translate}}
+                </md-button>
+            </div>
+        </div>
+    </form>
+</md-dialog>

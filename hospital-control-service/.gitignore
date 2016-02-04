@@ -1,0 +1,85 @@
+# IDE Junk
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+**/local.properties
+.settings/
+.loadpath
+**/.externalToolBuilders/
+**/.launch
+**/.cproject
+**/.buildpath
+**/.project
+**/.classpath
+**/~*
+.project
+.classpath
+.gradle
+.idea
+.iml
+ 
+test-output
+bin
+deploy
+nbproject/private
+nbproject
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+
+# Linux
+*~
+.directory
+
+# Compiled source
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.war
+*.ear
+*.rar
+*.tar
+*.zip
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store?
+enthumbs.db
+Icon?
+Thumbs.db
+._*
+.Spotlight-V100
+.Trashes
+Desktop.ini
+
+# Maven
+target/
+
+# Others
+target
+.settings/*
+!.settings/.jsdtscope
+/.sonar
+*.prefs
+rebel.xml
+*.NavData
+

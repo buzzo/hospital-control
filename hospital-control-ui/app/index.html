@@ -1,0 +1,98 @@
+<!doctype html>
+
+<html class="no-js" ng-app="app">
+    <head>
+        <base href="/">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <title ng-bind="pageTitle">My App</title>
+        <link rel="stylesheet" href="css/angular-material.css">
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+
+    <body layout="row" class="background">
+
+        <!--left menu-->
+        <md-sidenav class="md-sidenav-left" md-component-id="left">
+            <md-toolbar class="md-tall md-hue-2">
+                <span flex></span>
+                <div layout="column" class="md-toolbar-tools-bottom inset">
+                    <img class="fab-avatar" src="images/avatar.png"/>
+                    <span></span>
+                    <div>Firstname Lastname</div>
+                    <div>email@domainname.com</div>
+                </div>
+            </md-toolbar>
+            <md-list ng-controller="LeftMenuController">
+                <md-list-item ng-click="navigateTo('dashboard')">
+                    <div class="inset"><md-icon class="material-icons sm-icon-margin">dashboard</md-icon></div>
+                    <div class="inset">{{'DASHBOARD'|translate}}</div>
+                </md-list-item>
+                <md-list-item ng-click="navigateTo('patient')">
+                    <div class="inset"><md-icon class="material-icons sm-icon-margin">people</md-icon></div>
+                    <div class="inset">{{'PATIENTS'|translate}}</div>
+                </md-list-item>
+                <md-divider></md-divider>
+                <md-subheader>{{'MANAGEMENT'|translate}}</md-subheader>
+                <md-list-item ng-click="navigateTo('account')">
+                    <div class="inset"><md-icon md-menu-origin class="material-icons">perm_identity</md-icon></div>
+                    <div class="inset">{{'MY_ACCOUNT'|translate}}</div>
+                </md-list-item>
+                <md-list-item>
+                    <div class="inset"><md-icon md-menu-origin class="material-icons">exit_to_app</md-icon></div>
+                    <div class="inset">{{'SIGN_OUT'|translate}}</div>
+                </md-list-item>
+            </md-list>
+        </md-sidenav>
+
+        <div layout="column" class="relative" layout-fill role="main">
+            <div ng-controller="TopBarController">
+                <!-- top menu -->
+                <md-toolbar class="bar-show-hide" ng-show="!showSearch">
+                    <div class="md-toolbar-tools">
+                        <md-button class="md-icon-button" ng-click="toggleLeftNav()">
+                            <md-icon class="material-icons">menu</md-icon>
+                        </md-button>
+                        <h3>
+                            {{title}}
+                        </h3>
+                        <span flex></span>
+                        <md-button class="md-icon-button" ng-click="showSearch=!showSearch" ng-show="allowSearch">
+                            <md-icon class="material-icons">search</md-icon>
+                        </md-button>
+                    </div>
+                </md-toolbar>
+                <!-- search -->
+                <md-toolbar class="bar-show-hide md-hue-1" ng-show="showSearch">
+                    <div class="md-toolbar-tools">
+                        <md-button class="md-icon-button" ng-click="search='';query();showSearch=!showSearch;">
+                            <md-icon class="material-icons">arrow_back</md-icon>
+                        </md-button>
+                        <h3 class="pointer" ng-click="search='';query();showSearch=!showSearch;">
+                            {{'BACK'|translate}}
+                        </h3>
+                        <span>&nbsp;&nbsp;&nbsp;</span>
+                        <md-input-container md-theme="input" flex>
+                            <label>&nbsp;</label>
+                            <input type="search" ng-model="search" ng-keyup="query()" placeholder="{{'SEARCH'|translate}}">
+                        </md-input-container>
+                        <md-button class="md-icon-button" ng-click="search='';query();">
+                            <md-icon class="material-icons">close</md-icon>
+                        </md-button>
+                    </div>
+                </md-toolbar>
+            </div>
+
+            <!--dynamic content-->
+            <md-content>
+                <ng-view></ng-view>
+            </md-content>
+
+        </div>
+
+        <script src="js/main.js"></script>
+
+    </body>
+</html>

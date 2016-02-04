@@ -1,0 +1,61 @@
+@import url(https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic);
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
+$background-color: #eee;
+$icon-size: 56px;
+
+// --------------------------------------------------------------------------------------------
+// settings for top menu and search bar
+
+// makes the text 'back' from search bar as a pointer
+.pointer {
+  cursor: pointer;
+}
+
+// angular-animate transition between top bar and search bar
+.bar-show-hide {
+  -webkit-transition: all linear 0.3s;
+  transition: all linear 0.3s;
+}
+
+.bar-show-hide.ng-hide {
+  opacity: 0;
+  margin-top: -64px;
+}
+
+// --------------------------------------------------------------------------------------------
+// settings for left menu
+
+// defines the properties for an circle avatar icon used in the left menu
+.fab-avatar {
+  border-radius: 99%;
+  height: $icon-size;
+  width: $icon-size;
+  margin: 5px;
+}
+
+.md-toolbar-tools-bottom {
+  font-size: small;
+  & :last-child {
+    opacity: 0.8;
+  }
+}
+
+// --------------------------------------------------------------------------------------------
+// settings for content region
+
+.sm-layout-padding {
+  padding: 10px 50px;
+}
+
+.gt-layout-padding {
+  padding: 10px 250px;
+}
+
+.background {
+  background-color: $background-color;
+}
+
+md-content.md-default-theme {
+  background-color: $background-color;
+}

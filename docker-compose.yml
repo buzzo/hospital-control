@@ -1,0 +1,12 @@
+hospital-service:
+  image: hospital-control/hospital-control-service:latest
+  ports:
+   - "8181:8080"
+
+hospital-ui:
+  image: hospital-control/hospital-control-ui:latest
+  ports:
+   - "8080:80"
+  links:
+   - hospital-service:hospital-service
+

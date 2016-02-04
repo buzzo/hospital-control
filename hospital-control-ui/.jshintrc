@@ -1,0 +1,37 @@
+/*from angularjs*/
+{
+  "bitwise": true,
+  "immed": true,
+  "newcap": true,
+  "noarg": true,
+  "noempty": true,
+  "nonew": true,
+  "trailing": true,
+  "maxlen": 200,
+  "boss": true,
+  "eqnull": true,
+  "expr": true,
+  "globalstrict": true,
+  "laxbreak": true,
+  "loopfunc": true,
+  "sub": true,
+  "undef": true,
+  "unused": true,
+  "indent": 2,
+  "quotmark": "single",
+  "smarttabs": true,
+  "multistr": true,
+  /* --- */
+  "node": true,
+  "globals": {
+    "describe": false,
+    "it": false,
+    "expect": false,
+    "beforeEach": false,
+    "afterEach": false,
+    "angular": false,
+    "element": false,
+    "browser": false,
+    "by": false
+  }
+}
