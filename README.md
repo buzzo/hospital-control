@@ -17,7 +17,7 @@ Infrastructure:
 - docker-compose
 
 ### Quick Start
-You will need Java 8, Node.js, docker and docker-compose installed in your machine.
+You will need [Java 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html), [Node.js](https://nodejs.org), [docker](https://docs.docker.com/engine/installation/) and [docker-compose](https://docs.docker.com/compose/install/) installed in your machine.
 
 
 ```
@@ -26,4 +26,4 @@ cd hospital-control
 docker-compose up
 ```
 
-Then just check http://localhost:8080
+Then just check [http://localhost:8080](http://localhost:8080)
